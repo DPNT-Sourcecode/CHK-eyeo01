@@ -14,7 +14,13 @@ def checkout(skus):
     items_count = {item: skus.count(item) for item in set(skus)}
     for item, offers in special_offers.items():
         for offer_quantity, offer_price in offers:
-            while items
+            while items_count[item] >= offer_quantity:
+                total += offer_price
+                items_count[item] -= offer_quantity
+    
+    free_b = items_count['E'] // 2
+    items_count['B'] = max(0, items_count['B'] - free_b)
+    
 
 
     for item, price in prices.items():
@@ -26,5 +32,6 @@ def checkout(skus):
         else:
             total += count * price
     return total
+
 
 

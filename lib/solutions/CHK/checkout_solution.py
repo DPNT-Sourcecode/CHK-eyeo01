@@ -51,7 +51,7 @@ def checkout(skus):
 
     free_items = [('E', 'B'), ('N', 'M'), ('R', 'Q')]
     for free_item, paid_item in free_items:
-        free_item_count = items_count.get(paid_item, 0) // 2
+        free_item_count = items_count.get(paid_item, 0) // 
         items_count[free_item] = max(0, items_count.get(free_item, 0) - free_item_count)
 
     for item, offers in special_offers.items():
@@ -65,6 +65,7 @@ def checkout(skus):
             total += count * prices[item]
 
     return total
+
 
 
 

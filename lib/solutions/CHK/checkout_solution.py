@@ -64,7 +64,7 @@ def checkout(skus):
          
          for item in items_to_remove:
               items_count[item] -= 1
-        
+    total += group_offer_set * group_offer_price
 
     for item, offers in special_offers.items():
         for offer_quantity, offer_price in offers:
@@ -77,3 +77,4 @@ def checkout(skus):
             total += count * prices[item]
 
     return total
+

@@ -39,6 +39,7 @@ def checkout(skus):
          'P': [(5, 200)],
          'Q': [(3, 80)],
          'V': [(3, 130), (2, 90)]
+         ''
          }
 
     if not all(sku in prices for sku in skus):
@@ -64,6 +65,7 @@ def checkout(skus):
             total += count * prices[item]
 
     return total
+
 
 
 

@@ -61,7 +61,7 @@ def checkout(skus):
 
     for _ in range(group_items_count):
         for item in group_offer_items:
-            if items_count[item] > 0:
+            if items_count.get(item, 0) > 0:
                 items_count[item] -= 1
                 break
             
@@ -77,4 +77,4 @@ def checkout(skus):
 
     return total
 
-print(checkout('SSS'))
+print(checkout('SSSZ'))

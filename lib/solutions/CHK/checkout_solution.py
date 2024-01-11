@@ -57,7 +57,7 @@ def checkout(skus):
     group_offer_items = 'STXYZ'
     group_offer_count = sum(items_count.get(item, 0) for item in group_offer_items)
     group_offer_set = group_offer_count // 3
-    total = group_offer_set * group_offer_price
+    total += group_offer_set * group_offer_price
 
     for _ in range(group_offer_set):
          items_to_remove = sorted((item for item in group_offer_items if items_count.get(item, 0) > 0),

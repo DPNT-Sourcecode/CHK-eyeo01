@@ -35,7 +35,11 @@ def checkout(skus):
          'A': [(5, 200), (3, 130)], 
          'B': [(2, 45)], 
          'F': [(3, 20)],
-         'H': [()]
+         'H': [(10, 80), (5, 45)],
+         'K': [(2, 150)],
+         'P': [(5, 200)],
+         'Q': [(3, 80)],
+         'V': [(3, 130), (2, 90)]
          }
 
     if not all(sku in prices for sku in skus):
@@ -44,7 +48,8 @@ def checkout(skus):
     total = 0
     items_count = {item: skus.count(item) for item in set(skus)}
 
-    free_b = items_count.get('E', 0) // 2
+    free_items = 
+    free_item_count = items_count.get('E', 0) // 2
     items_count['B'] = max(0, items_count.get('B', 0) - free_b)
 
     for item, offers in special_offers.items():
@@ -58,3 +63,4 @@ def checkout(skus):
             total += count * prices[item]
 
     return total
+

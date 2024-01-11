@@ -48,7 +48,7 @@ def checkout(skus):
     items_count = {item: skus.count(item) for item in set(skus)}
 
     free_items = [('E', 'B'), ('N', 'M'), ('R', 'Q'), ('F', 'F'), ('U', 'U')]
-    quantity_needed = {'E': 2, 'N': 3, 'R': 3, 'F': 2, 'U': 3}
+    quantity_needed = {'E': 2, 'N': 3, 'R': 3, 'F': 3, 'U': 4}
     for paid_item, free_item in free_items:
         free_item_count = items_count.get(paid_item, 0) // quantity_needed[paid_item]
         items_count[free_item] = max(0, items_count.get(free_item, 0) - free_item_count)
@@ -64,5 +64,6 @@ def checkout(skus):
             total += count * prices[item]
 
     return total
+
 
 

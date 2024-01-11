@@ -20,18 +20,13 @@ def checkout(skus):
     
     free_b = items_count['E'] // 2
     items_count['B'] = max(0, items_count['B'] - free_b)
-    
 
+    for item, count in items_count.items():
+            total += count * prices[item]
 
-    for item, price in prices.items():
-        count = skus.count(item)
-        if item in special_offers:
-            offer_count, offer_price = special_offers[item]
-            total += (count // offer_count) * offer_price
-            total += (count % offer_count) * price
-        else:
-            total += count * price
     return total
+
+print(checkout('ABCDE'*5))
 
 
 

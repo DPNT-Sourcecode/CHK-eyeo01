@@ -13,9 +13,9 @@ def checkout(skus):
     total = 0
     items_count = {item: skus.count(item) for item in set(skus)}
 
-    free_b = items_count['E'] // 2
+    free_b = items_count.get('E', 0) // 2
     items_count['B'] = max(0, items_count['B'] - free_b)
-    
+
     for item, offers in special_offers.items():
         for offer_quantity, offer_price in offers:
             while items_count[item] >= offer_quantity:

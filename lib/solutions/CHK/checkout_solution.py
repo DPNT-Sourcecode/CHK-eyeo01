@@ -55,17 +55,12 @@ def checkout(skus):
 
     group_offer_price = 45
     group_offer_items = {'S', 'T', 'X', 'Y', 'Z'}
-    group_items_counts = [(item, items_count.get(item, 0)) for item in group_offer_items]
-    group_items_counts.sort(key=lambda x: x[1])
-    
-    while sum(count for _, count in group_items_counts) >= 3:
-        total += group_offer_price
-        for i in range(3):
-            item, count = group_items_counts[i]
-            if count > 0:
-                items_count[item] -= 1
-                group_items_counts[i] = (item, count - 1)
-        group_items_counts.sort(key=lambda x: x[1])    
+    group_items_count = sum()
+    group_offer_count = group_items_count // 3
+    total += group_offer_count * group_offer_price
+
+    for _ in range(group_count):
+         
 
     for item, offers in special_offers.items():
         for offer_quantity, offer_price in offers:

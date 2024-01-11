@@ -56,7 +56,15 @@ def checkout(skus):
     group_offer_price = 45
     group_offer_items = {'S', 'T', 'X', 'Y', 'Z'}
     group_offer_count = sum(items_count.get(item, 0) for item in group_offer_items)
+    group_offer_set = group_offer_count // 3
 
+    for _ in range(group_offer_set):
+         items_to_remove = sorted((item for item in group_offer_items if items_count.get(item, 0) > 0),
+    key=lambda x: prices[x])[:3]
+         
+         for item in items_to_remove:
+              items_count[item] -= 1
+        
 
     for item, offers in special_offers.items():
         for offer_quantity, offer_price in offers:

@@ -3,9 +3,13 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
+    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10}
 
-    special_offers = {'A': [(5, 200), (3, 130)], 'B': [(2, 45)]}
+    special_offers = {
+         'A': [(5, 200), (3, 130)], 
+         'B': [(2, 45)], 
+         'F': [(3, 20)]
+         }
 
     if not all(sku in prices for sku in skus):
         return -1
@@ -27,4 +31,5 @@ def checkout(skus):
             total += count * prices[item]
 
     return total
+
 

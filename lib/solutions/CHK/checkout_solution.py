@@ -61,7 +61,7 @@ def checkout(skus):
         group_items_sorted = sorted(group_offer_items, key=lambda x: prices[x])
         for _ in range(group_offer_set):
             for item in group_items_sorted:
-                if items_count[item] > 0:
+                if items_count.get(item, 0) > 0:
                     items_count[item] -= 1
                     group_offer_count -= 1
                     if group_offer_count % 3 == 0:
@@ -80,3 +80,5 @@ def checkout(skus):
             total += count * prices[item]
 
     return total
+
+checkout('SSS')

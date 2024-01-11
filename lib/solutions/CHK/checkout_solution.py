@@ -66,7 +66,7 @@ def checkout(skus):
                     group_offer_count -= 1
                     if group_offer_count % 3 == 0:
                         break
-            total += group_offer_set * group_offer_price
+    total += group_offer_set * group_offer_price
     
 
     for item, offers in special_offers.items():
@@ -80,5 +80,6 @@ def checkout(skus):
             total += count * prices[item]
 
     return total
+
 
 

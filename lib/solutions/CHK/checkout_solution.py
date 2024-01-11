@@ -39,7 +39,7 @@ def checkout(skus):
          'K': [(2, 150)],
          'P': [(5, 200)],
          'Q': [(3, 80)],
-         'U': [(3, 80)],
+         'U': [(4, 80)],
          'V': [(3, 130), (2, 90)]
          }
 
@@ -66,3 +66,4 @@ def checkout(skus):
             total += count * prices[item]
 
     return total
+

@@ -69,6 +69,12 @@ def checkout(skus):
                     group_discount_counts[group_items_sorted[i][0]] -= 1
             else:
                 break
+
+    for item in group_offer_items:
+        total+= group_discount_counts[item] * prices[item]
+
+    for item in group_offer_items:
+        items_count.pop(item, None)        
             
     for item, offers in special_offers.items():
         for offer_quantity, offer_price in offers:
@@ -83,4 +89,5 @@ def checkout(skus):
     return total
 
 print(checkout('SSSZ'))
+
 

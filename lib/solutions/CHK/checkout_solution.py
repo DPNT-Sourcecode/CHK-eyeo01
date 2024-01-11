@@ -55,7 +55,20 @@ def checkout(skus):
 
     group_offer_price = 45
     group_offer_items = ['X', 'S', 'T', 'Y', 'Z']
-    group_discount_counts = {item: }
+    group_discount_counts = {item: items_count.get(item, 0) for item in group_offer_items}
+    group_items_sorted = sorted(group_discount_counts.items(), key=lambda x: -prices[x[0]])
+
+    group_discount_applied = 0
+
+    for item, count in group_items_sorted:
+        while group_discount_applied < group_discount_counts[item]:
+            if group_discount_applied + 3 <= sum(group_discount_counts.values()):
+                group_discount_applied += 3
+                total += 45
+                for i in range(3):
+                    group_discount_counts[group_items_sorted[i][0]] -= 1
+            else:
+                break
             
     for item, offers in special_offers.items():
         for offer_quantity, offer_price in offers:
@@ -70,3 +83,4 @@ def checkout(skus):
     return total
 
 print(checkout('SSSZ'))
+

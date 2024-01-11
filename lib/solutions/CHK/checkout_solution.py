@@ -33,12 +33,12 @@ def checkout(skus):
 
     special_offers = {
         'A': [(5, 200), (3, 130)], 
-         'B': [(2, 45)], 
-         'H': [(10, 80), (5, 45)],
-         'K': [(2, 120)],
-         'P': [(5, 200)],
-         'Q': [(3, 80)],
-         'V': [(3, 130), (2, 90)]
+        'B': [(2, 45)], 
+        'H': [(10, 80), (5, 45)],
+        'K': [(2, 120)],
+        'P': [(5, 200)],
+        'Q': [(3, 80)],
+        'V': [(3, 130), (2, 90)]
         }
 
     if not all(sku in prices for sku in skus):
@@ -57,16 +57,16 @@ def checkout(skus):
     group_offer_items = 'STXYZ'
     group_offer_count = sum(items_count.get(item, 0) for item in group_offer_items)
     group_offer_set = group_offer_count // 3
-    #if group_offer_set > 0:
-        #group_items_sorted = sorted(group_offer_items, key=lambda x: prices[x])
-        #for _ in range(group_offer_set):
-        #    for item in group_items_sorted:
-        #        if items_count[item] > 0:
-        #            items_count[item] -= 1
-        #            group_offer_count -= 1
-        #            if group_offer_count % 3 == 0:
-        #                break
-        #total += group_offer_set * group_offer_price
+    if group_offer_set > 0:
+        group_items_sorted = sorted(group_offer_items, key=lambda x: prices[x])
+        for _ in range(group_offer_set):
+            for item in group_items_sorted:
+                if items_count[item] > 0:
+                    items_count[item] -= 1
+                    group_offer_count -= 1
+                    if group_offer_count % 3 == 0:
+                        break
+        total += group_offer_set * group_offer_price
     
 
     for item, offers in special_offers.items():
@@ -80,6 +80,7 @@ def checkout(skus):
             total += count * prices[item]
 
     return total
+
 
 
 

@@ -57,16 +57,21 @@ def checkout(skus):
     group_offer_string = ''.join([sku for sku in skus if sku in group_offer_items])
     sorted_group_offer_string = ''.join(sorted(group_offer_string, key=lambda x: -prices[x]))
     group_sets = len(sorted_group_offer_string) // 3
-    length = group_sets
-    total += len(sorted_group_offer_string) // 3
+    length = group_sets * 3 
+    total += group_sets 
     if len(sorted_group_offer_string) % 3 == 0:
-         for sku in group_offer_string:
-              if sku in items_count:
-                   items_count[sku] -= 1
-                   if items_count[sku] <= 0:
+        for sku in group_offer_string:
+            if sku in items_count:
+                items_count[sku] -= 1
+                if items_count[sku] <= 0:
                         del items_count[sku]
     else:
-         for sku in sorted_group_offer_string[:]
+        for sku in sorted_group_offer_string[:length]:
+            if sku in items_count:
+                items_count[sku] -= 1
+                if items_count[sku] <= 0:
+                        del items_count[sku]
+
 
 
     for item, offers in special_offers.items():
@@ -81,3 +86,4 @@ def checkout(skus):
 
     return total
 
+print(checkout('SSSZ'))

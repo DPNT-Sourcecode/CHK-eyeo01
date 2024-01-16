@@ -53,7 +53,6 @@ def checkout(skus):
         free_item_count = items_count.get(paid_item, 0) // quantity_needed[paid_item]
         items_count[free_item] = max(0, items_count.get(free_item, 0) - free_item_count)
 
-    group_offer_price = 45
     group_offer_items = ['X', 'S', 'T', 'Y', 'Z']
     group_discount_counts = {item: items_count.get(item, 0) for item in group_offer_items}
     group_items_sorted = sorted(group_discount_counts.items(), key=lambda x: -prices[x[0]])
@@ -89,5 +88,3 @@ def checkout(skus):
     return total
 
 print(checkout('SSSZ'))
-
-

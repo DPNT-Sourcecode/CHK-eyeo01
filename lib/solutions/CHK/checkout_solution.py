@@ -58,7 +58,7 @@ def checkout(skus):
     sorted_group_offer_string = ''.join(sorted(group_offer_string, key=lambda x: -prices[x]))
     group_sets = len(sorted_group_offer_string) // 3
     length = group_sets * 3 
-    total += group_sets 
+    total += group_sets * 45
     if len(sorted_group_offer_string) % 3 == 0:
         for sku in group_offer_string:
             if sku in items_count:
@@ -87,3 +87,4 @@ def checkout(skus):
     return total
 
 print(checkout('SSSZ'))
+
